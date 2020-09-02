@@ -31,12 +31,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
+        httpSecurity.cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/api/auth/login")
+                .antMatchers("/api/auth/*")
                 .permitAll()
-                .antMatchers(HttpMethod.POST,"/api/auth/signup")
+                .antMatchers("/api/auth/accountVerification/*")
                 .permitAll()
                 .antMatchers(HttpMethod.GET, "/api/subpost")
                 .permitAll()
